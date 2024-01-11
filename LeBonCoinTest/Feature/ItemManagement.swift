@@ -17,4 +17,11 @@ final class ItemManagement {
 
         return categories[categoryIndex].name
     }
+
+    func formattedDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+
+        return dateFormatter.string(from: date)
+    }
 }

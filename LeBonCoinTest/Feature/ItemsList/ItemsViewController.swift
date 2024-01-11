@@ -12,32 +12,27 @@ class ItemsViewController: UIViewController {
     // MARK: - UI ELEMENTS
     private let categoryButton: UIButton = {
         let button = UIButton(type: .system)
-
         button.setTitle("Category", for: .normal)
-        button.backgroundColor = .blue
-        button.setTitleColor(.white, for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemBlue.cgColor
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
-
         return button
     }()
 
     private let resetButton: UIButton = {
         let button = UIButton(type: .system)
-
         button.setTitle("Reset Filter", for: .normal)
-        button.backgroundColor = .blue
-        button.setTitleColor(.white, for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemBlue.cgColor
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
-
         return button
     }()
 
     private let itemsList: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
 
-        //tableView.separatorStyle = .none
         tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: "ItemTableViewCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -155,7 +150,7 @@ extension ItemsViewController: UITableViewDataSource {
         }
 
         let item = viewModel.filteredItems[indexPath.row]
-        cell.configure(imageStringUrl: item.imagesUrl.small,
+        cell.configure(imageStringUrl: item.imagesUrl.thumb,
                        category: itemManagement.getCategoryName(categories: viewModel.categories, categoryId: item.categoryId),
                        title: item.title,
                        price: item.price,

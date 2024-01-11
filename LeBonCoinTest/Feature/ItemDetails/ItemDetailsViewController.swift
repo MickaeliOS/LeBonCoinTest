@@ -19,17 +19,18 @@ class ItemDetailsViewController: UIViewController {
     }()
 
     private lazy var footerStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [descriptionTextView, priceLabel, categoryLabel, dateLabel, idLabel])
+        let stack = UIStackView(arrangedSubviews: [descriptionLabel, priceLabel, categoryLabel, dateLabel, idLabel])
         stack.axis = .vertical
-        stack.distribution = .fillProportionally
-        stack.spacing = 15
+        stack.spacing = 5
         return stack
     }()
 
+    private let scrollView = UIScrollView()
+    private let containerView = UIView()
+    private let descriptionLabel = UILabel()
     private let titleLabel = UILabel()
     private let itemImageView = ItemImageView()
-    private let urgentLabel = UILabel()
-    private let descriptionTextView = UITextView()
+    private let urgentLabel = PaddingLabel()
     private let priceLabel = UILabel()
     private let categoryLabel = UILabel()
     private let dateLabel = UILabel()
@@ -50,72 +51,107 @@ class ItemDetailsViewController: UIViewController {
 
     // MARK: - FUNCTIONS
     private func setupUIElements() {
-        view.backgroundColor = .systemBackground
-
         // Font
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        titleLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         urgentLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-
-        descriptionTextView.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        priceLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        descriptionLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        priceLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         categoryLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         dateLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         idLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
 
         // Other
-        urgentLabel.textColor = .red
+        if let item = item, item.isUrgent {
+            urgentLabel.backgroundColor = .systemRed
+            urgentLabel.layer.masksToBounds = true
+            urgentLabel.layer.cornerRadius = 10
+            urgentLabel.topInset = 10
+            urgentLabel.bottomInset = 10
+            urgentLabel.leftInset = 10
+            urgentLabel.rightInset = 10
+            urgentLabel.textColor = .white
+            urgentLabel.textAlignment = .center
+        }
 
+        view.backgroundColor = .systemBackground
         itemImageView.contentMode = .scaleAspectFit
         itemImageView.layer.masksToBounds = true
         itemImageView.layer.cornerRadius = 10
-        itemImageView.backgroundColor = .red
-
         titleLabel.numberOfLines = 0
-
-//        descriptionLabel.numberOfLines = 0
-
+        titleLabel.textAlignment = .center
+        descriptionLabel.numberOfLines = 0
     }
 
     private func setupConstraints() {
-        view.addSubview(headerStackView)
-        view.addSubview(footerStackView)
+        setupScrollViewConstraints()
+        setupContainerViewConstraints()
+        setupStackViewsConstraints()
+    }
 
-        headerStackView.translatesAutoresizingMaskIntoConstraints = false
-        footerStackView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupScrollViewConstraints() {
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            headerStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            headerStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            headerStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-
-            footerStackView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 10),
-            footerStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            footerStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            footerStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-
-//            itemImageView.widthAnchor.constraint(equalToConstant: 170),
-            itemImageView.heightAnchor.constraint(equalToConstant: 200)
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 
+    private func setupContainerViewConstraints() {
+        scrollView.addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+    }
+
+    private func setupStackViewsConstraints() {
+        containerView.addSubview(headerStackView)
+        containerView.addSubview(footerStackView)
+        headerStackView.translatesAutoresizingMaskIntoConstraints = false
+        footerStackView.translatesAutoresizingMaskIntoConstraints = false
+
+        footerStackView.setCustomSpacing(30, after: descriptionLabel)
+
+        NSLayoutConstraint.activate([
+            headerStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            headerStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            headerStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+
+            footerStackView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 30),
+            footerStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            footerStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            footerStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
+
+            itemImageView.heightAnchor.constraint(equalToConstant: 200)
+        ])
+    }
+    
     private func setupItem() {
         guard let item else {
             return
         }
 
-        titleLabel.text = item.title
-        urgentLabel.text = item.isUrgent ? "Urgent" : ""
-
-        if let imageStringUrl = item.imagesUrl.thumb {
+        if let imageStringUrl = item.imagesUrl.small {
             itemImageView.downloadImageFrom(urlString: imageStringUrl)
         } else {
             itemImageView.image = UIImage(systemName: "photo.fill")
         }
 
-        descriptionTextView.text = "Description : \(item.description)"
+        titleLabel.text = item.title
+        urgentLabel.text = item.isUrgent ? " Urgent ! " : ""
+        descriptionLabel.text = "\(item.description)"
         priceLabel.text = "Prix : \(item.price.formattedBy2DigitsMax()) €"
         categoryLabel.text = "Catégorie : \(categoryName ?? "Unknown Category.")"
-        dateLabel.text = "Date : \(item.creationDate)"
+        dateLabel.text = "Date : \(itemManagement.formattedDate(date: item.creationDate))"
         idLabel.text = "ID : \(item.id)"
     }
 }

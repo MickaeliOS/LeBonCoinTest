@@ -23,6 +23,7 @@
 		8314E4072B4FF6C100489687 /* APIUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E4062B4FF6C100489687 /* APIUrl.swift */; };
 		8314E4092B504B1300489687 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E4082B504B1300489687 /* DoubleExtension.swift */; };
 		8314E40B2B504D8D00489687 /* ItemManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E40A2B504D8D00489687 /* ItemManagement.swift */; };
+		8314E40F2B50931600489687 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E40E2B50931600489687 /* PaddingLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		8314E4062B4FF6C100489687 /* APIUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrl.swift; sourceTree = "<group>"; };
 		8314E4082B504B1300489687 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		8314E40A2B504D8D00489687 /* ItemManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManagement.swift; sourceTree = "<group>"; };
+		8314E40E2B50931600489687 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				8314E3FB2B4EE7A500489687 /* ItemImageView.swift */,
+				8314E40E2B50931600489687 /* PaddingLabel.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				8314E3D82B4E964B00489687 /* ItemsViewController.swift in Sources */,
 				8314E3EE2B4EAA7100489687 /* ItemTableViewCell.swift in Sources */,
 				8314E3D42B4E964B00489687 /* AppDelegate.swift in Sources */,
+				8314E40F2B50931600489687 /* PaddingLabel.swift in Sources */,
 				8314E4072B4FF6C100489687 /* APIUrl.swift in Sources */,
 				8314E3F72B4EC87D00489687 /* UIViewControllerExtension.swift in Sources */,
 				8314E3FF2B4FEDB400489687 /* ItemDetailsViewController.swift in Sources */,
