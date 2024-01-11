@@ -14,7 +14,7 @@ struct Item: Codable {
     let description: String
     let price: Double
     let imagesUrl: ImageURL
-    let creationDate: String
+    let creationDate: Date
     let isUrgent: Bool
 }
 
