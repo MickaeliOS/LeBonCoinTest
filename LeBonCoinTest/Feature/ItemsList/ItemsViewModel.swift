@@ -11,13 +11,13 @@ final class ItemsViewModel {
 
     // MARK: - PROPERTIES
     weak var delegate: ItemsViewModelDelegate?
-    private let fetchService: FetchServiceProtocol
-    private var items: [Item] = []
+    private let fetchService: FetchService
+    var items: [Item] = []
     var filteredItems: [Item] = []
     var categories: [Category] = []
 
     // MARK: - INIT
-    init(fetchService: FetchServiceProtocol = FetchService()) {
+    init(fetchService: FetchService = FetchService()) {
         self.fetchService = fetchService
     }
 
@@ -38,7 +38,7 @@ final class ItemsViewModel {
         } catch let error as FetchService.FetchError {
             delegate?.getItemsDidFail(error: error.errorDescription)
         } catch {
-            delegate?.getItemsDidFail(error: "Something went wrong.")
+            delegate?.getItemsDidFail(error: FetchService.FetchError.downloadFailed.errorDescription)
         }
     }
 

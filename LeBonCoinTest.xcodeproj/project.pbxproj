@@ -24,7 +24,22 @@
 		8314E4092B504B1300489687 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E4082B504B1300489687 /* DoubleExtension.swift */; };
 		8314E40B2B504D8D00489687 /* ItemManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E40A2B504D8D00489687 /* ItemManagement.swift */; };
 		8314E40F2B50931600489687 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E40E2B50931600489687 /* PaddingLabel.swift */; };
+		8314E4172B50974A00489687 /* LeBonCoinTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E4162B50974A00489687 /* LeBonCoinTestTests.swift */; };
+		8314E41E2B512FC900489687 /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E41D2B512FC900489687 /* URLProtocolMock.swift */; };
+		8314E4202B5133E200489687 /* Item.json in Resources */ = {isa = PBXBuildFile; fileRef = 8314E41F2B5133E200489687 /* Item.json */; };
+		8314E4222B5133EF00489687 /* Categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 8314E4212B5133EF00489687 /* Categories.json */; };
+		8314E4242B513C4C00489687 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E4232B513C4C00489687 /* FakeData.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8314E4182B50974A00489687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8314E3C82B4E964B00489687 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8314E3CF2B4E964B00489687;
+			remoteInfo = LeBonCoinTest;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8314E3D02B4E964B00489687 /* LeBonCoinTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeBonCoinTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,10 +61,23 @@
 		8314E4082B504B1300489687 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		8314E40A2B504D8D00489687 /* ItemManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManagement.swift; sourceTree = "<group>"; };
 		8314E40E2B50931600489687 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		8314E4142B50974A00489687 /* LeBonCoinTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeBonCoinTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8314E4162B50974A00489687 /* LeBonCoinTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeBonCoinTestTests.swift; sourceTree = "<group>"; };
+		8314E41D2B512FC900489687 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
+		8314E41F2B5133E200489687 /* Item.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Item.json; sourceTree = "<group>"; };
+		8314E4212B5133EF00489687 /* Categories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Categories.json; sourceTree = "<group>"; };
+		8314E4232B513C4C00489687 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8314E3CD2B4E964B00489687 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8314E4112B50974A00489687 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				8314E3D22B4E964B00489687 /* LeBonCoinTest */,
+				8314E4152B50974A00489687 /* LeBonCoinTestTests */,
 				8314E3D12B4E964B00489687 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				8314E3D02B4E964B00489687 /* LeBonCoinTest.app */,
+				8314E4142B50974A00489687 /* LeBonCoinTestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,6 +194,18 @@
 			path = ItemDetails;
 			sourceTree = "<group>";
 		};
+		8314E4152B50974A00489687 /* LeBonCoinTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				8314E4162B50974A00489687 /* LeBonCoinTestTests.swift */,
+				8314E41D2B512FC900489687 /* URLProtocolMock.swift */,
+				8314E4232B513C4C00489687 /* FakeData.swift */,
+				8314E41F2B5133E200489687 /* Item.json */,
+				8314E4212B5133EF00489687 /* Categories.json */,
+			);
+			path = LeBonCoinTestTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -184,6 +226,24 @@
 			productReference = 8314E3D02B4E964B00489687 /* LeBonCoinTest.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8314E4132B50974A00489687 /* LeBonCoinTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8314E41A2B50974A00489687 /* Build configuration list for PBXNativeTarget "LeBonCoinTestTests" */;
+			buildPhases = (
+				8314E4102B50974A00489687 /* Sources */,
+				8314E4112B50974A00489687 /* Frameworks */,
+				8314E4122B50974A00489687 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8314E4192B50974A00489687 /* PBXTargetDependency */,
+			);
+			name = LeBonCoinTestTests;
+			productName = LeBonCoinTestTests;
+			productReference = 8314E4142B50974A00489687 /* LeBonCoinTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -196,6 +256,10 @@
 				TargetAttributes = {
 					8314E3CF2B4E964B00489687 = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					8314E4132B50974A00489687 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 8314E3CF2B4E964B00489687;
 					};
 				};
 			};
@@ -213,6 +277,7 @@
 			projectRoot = "";
 			targets = (
 				8314E3CF2B4E964B00489687 /* LeBonCoinTest */,
+				8314E4132B50974A00489687 /* LeBonCoinTestTests */,
 			);
 		};
 /* End PBXProject section */
@@ -224,6 +289,15 @@
 			files = (
 				8314E3E02B4E964C00489687 /* LaunchScreen.storyboard in Resources */,
 				8314E3DD2B4E964C00489687 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8314E4122B50974A00489687 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8314E4202B5133E200489687 /* Item.json in Resources */,
+				8314E4222B5133EF00489687 /* Categories.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +326,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8314E4102B50974A00489687 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8314E4172B50974A00489687 /* LeBonCoinTestTests.swift in Sources */,
+				8314E41E2B512FC900489687 /* URLProtocolMock.swift in Sources */,
+				8314E4242B513C4C00489687 /* FakeData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8314E4192B50974A00489687 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8314E3CF2B4E964B00489687 /* LeBonCoinTest */;
+			targetProxy = 8314E4182B50974A00489687 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8314E3DE2B4E964C00489687 /* LaunchScreen.storyboard */ = {
@@ -441,6 +533,44 @@
 			};
 			name = Release;
 		};
+		8314E41B2B50974A00489687 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UF8VBT3FGJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mickaelhorn.LeBonCoinTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeBonCoinTest.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LeBonCoinTest";
+			};
+			name = Debug;
+		};
+		8314E41C2B50974A00489687 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UF8VBT3FGJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mickaelhorn.LeBonCoinTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeBonCoinTest.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LeBonCoinTest";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -458,6 +588,15 @@
 			buildConfigurations = (
 				8314E3E52B4E964C00489687 /* Debug */,
 				8314E3E62B4E964C00489687 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8314E41A2B50974A00489687 /* Build configuration list for PBXNativeTarget "LeBonCoinTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8314E41B2B50974A00489687 /* Debug */,
+				8314E41C2B50974A00489687 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

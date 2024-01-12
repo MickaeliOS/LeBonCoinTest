@@ -7,13 +7,11 @@
 
 import Foundation
 
-protocol FetchServiceProtocol {
-    func fetch<T: Decodable>(url: APIUrl) async throws -> [T]
-}
-
-final class FetchService: FetchServiceProtocol {
+final class FetchService {
 
     // MARK: - PROPERTIES
+    var session: URLSession
+
     private let decoder = {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.dateDecodingStrategy = .iso8601
@@ -25,15 +23,22 @@ final class FetchService: FetchServiceProtocol {
     enum FetchError: Error {
         case invalidUrl
         case downloadFailed
+        case badResponse
 
         var errorDescription: String {
             switch self {
             case .invalidUrl:
                 return "We're sorry, the URL is invalid."
+            case .badResponse:
+                return "The server returned an unexpected response. Please try again later."
             case .downloadFailed:
                 return "The download failed, please try again."
             }
         }
+    }
+
+    init(session: URLSession = URLSession(configuration: .default)) {
+        self.session = session
     }
 
     // MARK: - FUNCTIONS
@@ -42,12 +47,13 @@ final class FetchService: FetchServiceProtocol {
             throw FetchError.invalidUrl
         }
 
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let decodedData = try decoder.decode([T].self, from: data)
-            return decodedData
-        } catch {
-            throw FetchError.downloadFailed
+        let (data, response) = try await session.data(from: url)
+
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw FetchError.badResponse
         }
+
+        let decodedData = try decoder.decode([T].self, from: data)
+        return decodedData
     }
 }
