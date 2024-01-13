@@ -14,7 +14,7 @@ final class ItemsViewModel {
     private let fetchService: FetchService
     var items: [Item] = []
     var filteredItems: [Item] = []
-    var categories: [Category] = []
+    var categories: [ItemCategory] = []
 
     // MARK: - INIT
     init(fetchService: FetchService = FetchService()) {

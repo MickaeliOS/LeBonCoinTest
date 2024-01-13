@@ -8,7 +8,7 @@
 import Foundation
 
 final class ItemManagement {
-    func getCategoryName(categories: [Category], categoryId: Int) -> String {
+    func getCategoryName(categories: [ItemCategory], categoryId: Int) -> String {
         let categoryIndex = categories.firstIndex { $0.id == categoryId }
 
         guard let categoryIndex else {

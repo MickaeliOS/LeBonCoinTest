@@ -11,6 +11,7 @@ class URLProtocolMock: URLProtocol {
     // this dictionary maps URLs to test data
     static var testURLs = [URL?: Data]()
     static var response: HTTPURLResponse?
+    static var error: Error?
 
     // say we want to handle all types of request
     override class func canInit(with request: URLRequest) -> Bool {
@@ -23,6 +24,11 @@ class URLProtocolMock: URLProtocol {
     }
 
     override func startLoading() {
+        if let error = URLProtocolMock.error  {
+            self.client?.urlProtocol(self, didFailWithError: error)
+            return
+        }
+
         // if we have a valid URL…
         if let url = request.url {
             // …and if we have test data for that URL…
