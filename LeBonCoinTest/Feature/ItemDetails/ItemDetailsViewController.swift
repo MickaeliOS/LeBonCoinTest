@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemDetailsViewController: UIViewController {
+final class ItemDetailsViewController: UIViewController {
 
     // MARK: - UI ELEMENTS
     private lazy var headerStackView: UIStackView = {
@@ -141,7 +141,7 @@ class ItemDetailsViewController: UIViewController {
             footerStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
             footerStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
 
-            itemImageView.heightAnchor.constraint(equalToConstant: 200),
+            itemImageView.heightAnchor.constraint(equalToConstant: 300),
         ])
     }
 
@@ -150,7 +150,7 @@ class ItemDetailsViewController: UIViewController {
             return
         }
 
-        if let imageStringUrl = item.imagesUrl.small {
+        if let imageStringUrl = item.imagesUrl.thumb {
             itemImageView.downloadImageFrom(urlString: imageStringUrl)
         } else {
             itemImageView.image = UIImage(systemName: "photo.fill")

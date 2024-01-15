@@ -8,6 +8,7 @@
 import Foundation
 
 final class FakeDataResponseError {
+    // MARK: - DATA
     static var correctItemData: Data {
         let bundle = Bundle(for: FakeDataResponseError.self)
         let url = bundle.url(forResource: "Item", withExtension: "json")
@@ -22,11 +23,11 @@ final class FakeDataResponseError {
         return data
     }
 
-    // Response
+    // MARK: - RESPONSE
     static let responseOK = HTTPURLResponse(url: URL(string: "https://responseOK.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
     static let responseKO = HTTPURLResponse(url: URL(string: "https://responseKO.com")!, statusCode: 500, httpVersion: nil, headerFields: nil)!
 
-    // Error
+    // MARK: - ERROR
     final class MockError: Error {}
     static let mockError = MockError()
 }

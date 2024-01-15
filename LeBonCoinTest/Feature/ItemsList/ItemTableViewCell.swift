@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemTableViewCell: UITableViewCell {
+final class ItemTableViewCell: UITableViewCell {
 
     // MARK: - UI ELEMENTS
     private lazy var verticalStackView: UIStackView = {
@@ -67,7 +67,7 @@ class ItemTableViewCell: UITableViewCell {
             horizontalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             horizontalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
 
-            itemImageView.widthAnchor.constraint(equalToConstant: 100),
+            itemImageView.widthAnchor.constraint(equalToConstant: 150),
             itemImageView.heightAnchor.constraint(equalTo: itemImageView.widthAnchor),
         ])
     }

@@ -9,12 +9,16 @@ import XCTest
 @testable import LeBonCoinTest
 
 final class ItemManagementTests: XCTestCase {
+    
+    // MARK: - PROPERTIES
     private var sut: ItemManagement!
 
+    // MARK: - SETUP
     override func setUp() {
         sut = ItemManagement()
     }
 
+    // MARK: - TESTS
     func testGivenCategoriesListAndID_WhenGettingCategoryName_ThenCategoryNameIsReturned() {
         let categories = TestHelpers.decodeCategories()
         let categoryID = 1
@@ -39,8 +43,6 @@ final class ItemManagementTests: XCTestCase {
 
         let formattedDateString = sut.formattedDate(date: date)
 
-        // Vérifier le résultat
         XCTAssertEqual(formattedDateString, "01-01-2020")
     }
-
 }

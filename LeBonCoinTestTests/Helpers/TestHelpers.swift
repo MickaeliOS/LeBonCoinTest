@@ -9,6 +9,8 @@ import XCTest
 @testable import LeBonCoinTest
 
 final class TestHelpers: XCTestCase {
+
+    // MARK: - FUNCTIONS
     static func controlItems(items: [Item]) {
         // First, we make sure that we have 4 items.
         XCTAssertEqual(items.count, 4)

@@ -204,15 +204,47 @@
 		8314E4152B50974A00489687 /* LeBonCoinTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				8314E4162B50974A00489687 /* ItemsViewModelTests.swift */,
-				8314E4252B52D77A00489687 /* ItemManagementTests.swift */,
-				8314E41D2B512FC900489687 /* URLProtocolMock.swift */,
-				8314E4232B513C4C00489687 /* FakeDataResponseError.swift */,
-				8314E41F2B5133E200489687 /* Item.json */,
-				8314E4212B5133EF00489687 /* Categories.json */,
-				8314E4272B52D7B800489687 /* TestHelpers.swift */,
+				8314E42D2B55574900489687 /* Mock */,
+				8314E42B2B55571500489687 /* ItemViewModelTests */,
+				8314E42C2B55572700489687 /* ItemManagementTest */,
+				8314E42E2B55576700489687 /* Helpers */,
 			);
 			path = LeBonCoinTestTests;
+			sourceTree = "<group>";
+		};
+		8314E42B2B55571500489687 /* ItemViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				8314E4162B50974A00489687 /* ItemsViewModelTests.swift */,
+			);
+			path = ItemViewModelTests;
+			sourceTree = "<group>";
+		};
+		8314E42C2B55572700489687 /* ItemManagementTest */ = {
+			isa = PBXGroup;
+			children = (
+				8314E4252B52D77A00489687 /* ItemManagementTests.swift */,
+			);
+			path = ItemManagementTest;
+			sourceTree = "<group>";
+		};
+		8314E42D2B55574900489687 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				8314E41F2B5133E200489687 /* Item.json */,
+				8314E4212B5133EF00489687 /* Categories.json */,
+				8314E41D2B512FC900489687 /* URLProtocolMock.swift */,
+				8314E4232B513C4C00489687 /* FakeDataResponseError.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		8314E42E2B55576700489687 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8314E4272B52D7B800489687 /* TestHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

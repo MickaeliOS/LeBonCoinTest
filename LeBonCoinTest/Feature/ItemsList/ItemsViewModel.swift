@@ -10,11 +10,11 @@ import Foundation
 final class ItemsViewModel {
 
     // MARK: - PROPERTIES
-    weak var delegate: ItemsViewModelDelegate?
-    private let fetchService: FetchService
     var items: [Item] = []
     var filteredItems: [Item] = []
     var categories: [ItemCategory] = []
+    weak var delegate: ItemsViewModelDelegate?
+    private let fetchService: FetchService
 
     // MARK: - INIT
     init(fetchService: FetchService = FetchService()) {
@@ -33,7 +33,6 @@ final class ItemsViewModel {
 
             items = sortedItems
             filteredItems = sortedItems
-
             delegate?.getItemsDidSucceed()
         } catch let error as FetchService.FetchError {
             delegate?.getItemsDidFail(error: error.errorDescription)

@@ -7,8 +7,9 @@
 
 import Foundation
 
-class URLProtocolMock: URLProtocol {
-    // this dictionary maps URLs to test data
+final class URLProtocolMock: URLProtocol {
+
+    // MARK: - PROPERTIES
     static var testURLs = [URL?: Data]()
     static var response: HTTPURLResponse?
     static var error: Error?

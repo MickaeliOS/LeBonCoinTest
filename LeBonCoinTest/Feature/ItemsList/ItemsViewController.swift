@@ -7,27 +7,29 @@
 
 import UIKit
 
-class ItemsViewController: UIViewController {
+final class ItemsViewController: UIViewController {
 
     // MARK: - UI ELEMENTS
     private let categoryButton: UIButton = {
         let button = UIButton(type: .system)
+
+        // Forcing a system image to be on the right side.
         let configuration = UIImage.SymbolConfiguration(textStyle: .caption1)
         let image = UIImage(systemName: "chevron.down", withConfiguration: configuration)
+        button.setImage(image, for: .normal)
+        button.semanticContentAttribute = .forceRightToLeft
 
-        button.setTitle("Category", for: .normal)
+        button.setTitle("Categories", for: .normal)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemBlue.cgColor
         button.layer.cornerRadius = 10
-        button.setImage(image, for: .normal)
-        button.semanticContentAttribute = .forceRightToLeft
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     private let resetButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Reset Filter", for: .normal)
+        button.setTitle("Rafraîchir", for: .normal)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemBlue.cgColor
         button.layer.cornerRadius = 10
@@ -37,10 +39,8 @@ class ItemsViewController: UIViewController {
 
     private let itemsList: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-
         tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: "ItemTableViewCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
-
         return tableView
     }()
 
@@ -59,16 +59,24 @@ class ItemsViewController: UIViewController {
     // MARK: - VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        getItems()
-        setupUI()
-        configureResetButton()
+
         viewModel.delegate = self
+        getItems()
+        setupUIElements()
+        configureResetButton()
     }
 
     // MARK: - FUNCTIONS
-    private func setupUI() {
+    private func getItems() {
+        Task {
+            await viewModel.getItems()
+        }
+    }
+
+    private func setupUIElements() {
         view.backgroundColor = .systemBackground
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Annonces", style: .plain, target: nil, action: nil)
+
         setupButtonsStackView()
         setupTableView()
     }
@@ -81,26 +89,8 @@ class ItemsViewController: UIViewController {
             buttonsStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             buttonsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             buttonsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-
             resetButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-    }
-
-    private func setupCategoryMenu() {
-        let optionClosure = { [weak self] (action: UIAction) in
-            guard let self else { return }
-            self.viewModel.filterItemsBy(categoryName: action.title)
-            itemsList.reloadData()
-        }
-
-        var actions: [UIAction] = []
-
-        viewModel.categories.forEach { category in
-            actions.append(UIAction(title: category.name, handler: optionClosure))
-        }
-
-        categoryButton.menu = UIMenu(children: actions)
-        categoryButton.showsMenuAsPrimaryAction = true
     }
 
     private func setupTableView() {
@@ -117,12 +107,6 @@ class ItemsViewController: UIViewController {
         ])
     }
 
-    private func getItems() {
-        Task {
-            await viewModel.getItems()
-        }
-    }
-
     private func configureResetButton() {
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
     }
@@ -130,6 +114,23 @@ class ItemsViewController: UIViewController {
     @objc func resetButtonTapped() {
         viewModel.resetFilter()
         itemsList.reloadData()
+    }
+
+    private func setupCategoryMenu() {
+        let optionClosure = { [weak self] (action: UIAction) in
+            guard let self else { return }
+            viewModel.filterItemsBy(categoryName: action.title)
+            itemsList.reloadData()
+        }
+
+        var actions: [UIAction] = []
+
+        viewModel.categories.forEach { category in
+            actions.append(UIAction(title: category.name, handler: optionClosure))
+        }
+
+        categoryButton.menu = UIMenu(children: actions)
+        categoryButton.showsMenuAsPrimaryAction = true
     }
 }
 
@@ -157,7 +158,7 @@ extension ItemsViewController: UITableViewDataSource {
         }
 
         let item = viewModel.filteredItems[indexPath.row]
-        cell.configure(imageStringUrl: item.imagesUrl.thumb,
+        cell.configure(imageStringUrl: item.imagesUrl.small,
                        category: itemManagement.getCategoryName(categories: viewModel.categories, categoryId: item.categoryId),
                        title: item.title,
                        price: item.price,
