@@ -25,5 +25,5 @@ If you have any feedback, please reach out to me at mickael.horn.pro@gmail.com, 
 
 <div align="center">
   <h2> Item </h2>
-  <img src="https://github.com/MickaeliOS/LeBonCoinTest/blob/master/Screenshots/items.png" width="400">
+  <img src="https://github.com/MickaeliOS/LeBonCoinTest/blob/master/Screenshots/item.png" width="400">
 </div>
