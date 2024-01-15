@@ -7,11 +7,8 @@
 
 import Foundation
 
-struct Item: Codable, Equatable {
-    static func == (lhs: Item, rhs: Item) -> Bool {
-        return lhs.id == rhs.id
-    }
-
+// MARK: - ITEM
+struct Item: Codable {
     let id: Int
     let categoryId: Int
     let title: String
@@ -22,7 +19,15 @@ struct Item: Codable, Equatable {
     let isUrgent: Bool
 }
 
+// MARK: - IMAGEURL
 struct ImageURL: Codable {
     let small: String?
     let thumb: String?
+}
+
+// MARK: - PROTOCOL
+extension Item: Equatable {
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

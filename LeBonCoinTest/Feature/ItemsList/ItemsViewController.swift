@@ -12,10 +12,15 @@ class ItemsViewController: UIViewController {
     // MARK: - UI ELEMENTS
     private let categoryButton: UIButton = {
         let button = UIButton(type: .system)
+        let configuration = UIImage.SymbolConfiguration(textStyle: .caption1)
+        let image = UIImage(systemName: "chevron.down", withConfiguration: configuration)
+
         button.setTitle("Category", for: .normal)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemBlue.cgColor
         button.layer.cornerRadius = 10
+        button.setImage(image, for: .normal)
+        button.semanticContentAttribute = .forceRightToLeft
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -63,6 +68,7 @@ class ItemsViewController: UIViewController {
     // MARK: - FUNCTIONS
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Annonces", style: .plain, target: nil, action: nil)
         setupButtonsStackView()
         setupTableView()
     }
@@ -136,6 +142,7 @@ extension ItemsViewController: UITableViewDelegate {
                                                                                 categoryId: viewModel.filteredItems[indexPath.row].categoryId)
 
         navigationController?.pushViewController(itemDetailsViewController, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -160,6 +167,7 @@ extension ItemsViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - DELEGATE
 extension ItemsViewController: ItemsViewModelDelegate {
     func getItemsDidSucceed() {
         setupCategoryMenu()

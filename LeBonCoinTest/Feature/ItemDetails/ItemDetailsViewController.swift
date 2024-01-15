@@ -35,6 +35,7 @@ class ItemDetailsViewController: UIViewController {
     private let categoryLabel = UILabel()
     private let dateLabel = UILabel()
     private let idLabel = UILabel()
+    private let dividerView = DividerView()
 
     // MARK: - PROPERTIES
     private let itemManagement = ItemManagement()
@@ -74,6 +75,10 @@ class ItemDetailsViewController: UIViewController {
         }
 
         view.backgroundColor = .systemBackground
+        priceLabel.textAlignment = .center
+        categoryLabel.textAlignment = .center
+        dateLabel.textAlignment = .center
+        idLabel.textAlignment = .center
         itemImageView.contentMode = .scaleAspectFit
         itemImageView.layer.masksToBounds = true
         itemImageView.layer.cornerRadius = 10
@@ -116,6 +121,7 @@ class ItemDetailsViewController: UIViewController {
     private func setupStackViewsConstraints() {
         containerView.addSubview(headerStackView)
         containerView.addSubview(footerStackView)
+        containerView.addSubview(dividerView)
         headerStackView.translatesAutoresizingMaskIntoConstraints = false
         footerStackView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -126,15 +132,19 @@ class ItemDetailsViewController: UIViewController {
             headerStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
             headerStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
 
+            dividerView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 15),
+            dividerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            dividerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+
             footerStackView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 30),
             footerStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
             footerStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
             footerStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
 
-            itemImageView.heightAnchor.constraint(equalToConstant: 200)
+            itemImageView.heightAnchor.constraint(equalToConstant: 200),
         ])
     }
-    
+
     private func setupItem() {
         guard let item else {
             return

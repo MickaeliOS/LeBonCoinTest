@@ -31,6 +31,7 @@
 		8314E4242B513C4C00489687 /* FakeDataResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E4232B513C4C00489687 /* FakeDataResponseError.swift */; };
 		8314E4262B52D77A00489687 /* ItemManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E4252B52D77A00489687 /* ItemManagementTests.swift */; };
 		8314E4282B52D7B800489687 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E4272B52D7B800489687 /* TestHelpers.swift */; };
+		8314E42A2B552E4300489687 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314E4292B552E4300489687 /* DividerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		8314E4232B513C4C00489687 /* FakeDataResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataResponseError.swift; sourceTree = "<group>"; };
 		8314E4252B52D77A00489687 /* ItemManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManagementTests.swift; sourceTree = "<group>"; };
 		8314E4272B52D7B800489687 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		8314E4292B552E4300489687 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			children = (
 				8314E3FB2B4EE7A500489687 /* ItemImageView.swift */,
 				8314E40E2B50931600489687 /* PaddingLabel.swift */,
+				8314E4292B552E4300489687 /* DividerView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				8314E3D62B4E964B00489687 /* SceneDelegate.swift in Sources */,
 				8314E4052B4FF5DD00489687 /* FetchService.swift in Sources */,
 				8314E3FC2B4EE7A500489687 /* ItemImageView.swift in Sources */,
+				8314E42A2B552E4300489687 /* DividerView.swift in Sources */,
 				8314E40B2B504D8D00489687 /* ItemManagement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
